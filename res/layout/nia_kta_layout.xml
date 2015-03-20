@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/nia_bg_kta" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:systemui="http://schemas.android.com/apk/res/com.android.systemui">
+  
+    <TextView
+		android:textSize="13.5dip"
+		android:textStyle="bold"
+		android:textColor="#ff281304"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:text="★ MEDIATEK ANDROID ART AND DEV ★" />
+	<LinearLayout
+		android:layout_marginTop="15dp"
+		android:layout_marginLeft="10dp"
+		android:layout_marginRight="10dp"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+		
+        <com.dhian.KTA.Photo
+			android:id="@+id/nia_profile_kta"
+			android:layout_width="95.0dip"
+			android:layout_height="95.0dip"
+			android:scaleType="centerCrop" />
+       <View
+		   android:layout_width="1.0dip"
+		   android:layout_height="95.0dip"
+		   android:layout_marginLeft="10dp"
+		   android:layout_marginRight="10dp"
+		   android:background="#ff000000" />
+	   <LinearLayout
+		   android:layout_width="fill_parent"
+		   android:layout_height="wrap_content"
+		   android:orientation="vertical"
+		   android:gravity="center_horizontal">
+        <TextView
+			android:textSize="12.0dip"
+			android:textStyle="bold"
+			android:textColor="#ff281304"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="KARTU TANDA ANGGOTA" />
+		
+    <LinearLayout
+		android:gravity="center_vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+		<TextView
+			android:layout_width="50dp"
+			android:layout_height="wrap_content"
+			android:textSize="14dp"
+			android:textColor="#ff281304"
+			android:text="Nama" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="14dp"
+			android:textColor="#ff281304"
+			android:text=":" />
+		<com.dhian.KTA.Nama
+			android:id="@+id/nama"
+			android:layout_marginLeft="5dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="14dp"
+			android:textColor="#ff281304" />
+	</LinearLayout>
+		   <LinearLayout
+			   android:gravity="center_vertical"
+			   android:layout_width="fill_parent"
+			   android:layout_height="wrap_content"
+			   android:orientation="horizontal">
+			   <TextView
+				   android:layout_width="50dp"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text="Device" />
+			   <TextView
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text=":" />
+			   <com.dhian.KTA.Device
+				   android:id="@+id/device"
+				   android:layout_marginLeft="5dp"
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304" />
+		   </LinearLayout>
+		   <LinearLayout
+			   android:gravity="center_vertical"
+			   android:layout_width="fill_parent"
+			   android:layout_height="wrap_content"
+			   android:orientation="horizontal">
+			   <TextView
+				   android:layout_width="50dp"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text="Asal" />
+			   <TextView
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text=":" />
+			   <com.dhian.KTA.Asal
+				   android:id="@+id/asal"
+				   android:layout_marginLeft="5dp"
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304" />
+		   </LinearLayout>
+		   <LinearLayout
+			   android:gravity="center_vertical"
+			   android:layout_width="fill_parent"
+			   android:layout_height="wrap_content"
+			   android:orientation="horizontal">
+			   <TextView
+				   android:layout_width="50dp"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text="Usia" />
+			   <TextView
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text=":" />
+			   <com.dhian.KTA.Usia
+				   android:id="@+id/usia"
+				   android:layout_marginLeft="5dp"
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"/>
+		   </LinearLayout>
+		
+	   </LinearLayout>
+	</LinearLayout>
+    <com.dhian.KTA.Quote
+		android:gravity="center"
+		android:textSize="11.0dip"
+		android:textStyle="italic"
+		android:textColor="#ff281304"
+		android:layout_width="280dp"
+		android:layout_height="wrap_content"
+	    android:id="@+id/quote"
+		android:layout_marginTop="10dp"/>
+</LinearLayout>

@@ -1,0 +1,150 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+	
+	<LinearLayout
+		android:layout_marginTop="10dp"
+		android:layout_marginRight="10dp"
+		android:layout_marginBottom="10dp"
+		android:layout_marginLeft="10dp"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:gravity="center_horizontal"
+		android:orientation="vertical">
+	
+	<ImageView
+		android:id="@+id/photo"
+		android:layout_width="120dp"
+		android:layout_height="120dp"
+		android:scaleType="centerCrop"
+		android:src="@drawable/nia_default_kta" />
+	
+	<ScrollView
+		android:layout_marginTop="10dp"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent">
+		
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:orientation="vertical"
+			android:gravity="center_horizontal">
+		
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical"
+			android:orientation="horizontal">
+			
+			<TextView
+				android:layout_width="50dp"
+				android:layout_height="wrap_content"
+				android:text="Nama" />
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text=":" />
+			<EditText
+				android:id="@+id/nama"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:hint="Siapa Nama Anda" />
+		</LinearLayout>
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_width="50dp"
+				android:layout_height="wrap_content"
+				android:text="Device" />
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text=":" />
+			<EditText
+				android:id="@+id/device"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:hint="Apa Device Anda?" />
+		</LinearLayout>
+		
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="50dp"
+					android:layout_height="wrap_content"
+					android:text="Asal" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=":" />
+				<EditText
+					android:id="@+id/asal"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:hint="Dari Mana Asal Anda?" />
+			</LinearLayout>
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="50dp"
+					android:layout_height="wrap_content"
+					android:text="Usia" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=":" />
+				<EditText
+					android:id="@+id/usia"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:hint="Berapa Usia Anda" />
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="50dp"
+					android:layout_height="wrap_content"
+					android:text="Quote" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=":" />
+				<EditText
+					android:id="@+id/quote"
+					android:layout_width="fill_parent"
+					android:layout_height="100dp"
+					android:hint="Masukan Quote Anda" />
+				
+			</LinearLayout>
+			<Button
+				android:id="@+id/save"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="Simpan" />
+		
+		</LinearLayout>
+		
+	</ScrollView>
+	
+	
+	
+	</LinearLayout>
+    
+</LinearLayout>
