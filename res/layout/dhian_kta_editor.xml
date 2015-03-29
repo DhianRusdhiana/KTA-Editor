@@ -11,13 +11,144 @@
 		android:layout_height="fill_parent"
 		android:gravity="center_horizontal"
 		android:orientation="vertical">
-	
+		<LinearLayout
+			android:layout_width="fill_parent"
+		    android:layout_height="40dp"
+			android:orientation="horizontal">
+			<Button
+				android:background="@drawable/button"
+				android:id="@+id/tab_photo"
+				android:layout_width="0dp"
+				android:layout_height="fill_parent"
+				android:layout_weight="1.0"
+				android:text="Photo" />
+			<View
+				android:layout_width="1dp"
+				android:layout_height="30dp"
+				android:background="#ffff0000" 
+				android:layout_marginLeft="3dp"
+				android:layout_marginRight="3dp" />
+			<Button
+				android:background="@drawable/button"
+				android:id="@+id/tab_logo"
+				android:layout_width="0dp"
+				android:layout_height="fill_parent"
+				android:layout_weight="1.0"
+				android:text="Logo" />
+		</LinearLayout>
+		<ViewFlipper
+			
+			android:id="@+id/tab"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content">
+			
+			
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:gravity="center">
+		<LinearLayout
+			android:layout_marginBottom="5dp"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:gravity="center">
+			<com.dhian.KTA.GifView
+				android:id="@+id/arrowLeft"
+				
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+			<TextView
+				android:layout_marginLeft="5dp"
+				android:layout_marginRight="5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Geser Untuk Memilih Bentuk Foto" />
+			<com.dhian.KTA.GifView
+				android:rotation="180"
+				android:id="@+id/arrowRight"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+		</LinearLayout>
+		
+    <ViewFlipper
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/viewFlipper">
+		
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:gravity="center">
+			
+			
+		
 	<ImageView
 		android:id="@+id/photo"
 		android:layout_width="120dp"
 		android:layout_height="120dp"
-		android:scaleType="centerCrop"
-		android:src="@drawable/nia_default_kta" />
+		android:scaleType="centerCrop"/>
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="SQUARE" />
+	
+		</LinearLayout>
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:gravity="center">
+			
+			<ImageView
+				android:id="@+id/photoCircle"
+				android:layout_width="120dp"
+				android:layout_height="120dp"
+				android:scaleType="centerCrop"/>
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="CIRCLE" />
+			
+		</LinearLayout>
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:gravity="center">
+
+			<ImageView
+				android:id="@+id/photoRounded"
+				android:layout_width="120dp"
+				android:layout_height="120dp"
+				android:scaleType="centerCrop"/>
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="ROUNDED" />
+
+		</LinearLayout>
+	</ViewFlipper>
+		</LinearLayout>
+		<LinearLayout
+			android:layout_marginTop="10dp"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:gravity="center">
+			
+			<ImageView
+				android:id="@+id/logo"
+				android:layout_width="fill_parent"
+				android:layout_height="120dp"/>
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="LOGO" />
+		</LinearLayout>
+		</ViewFlipper>
 	
 	<ScrollView
 		android:layout_marginTop="10dp"
@@ -37,7 +168,7 @@
 			android:orientation="horizontal">
 			
 			<TextView
-				android:layout_width="50dp"
+				android:layout_width="70dp"
 				android:layout_height="wrap_content"
 				android:text="Nama" />
 			<TextView
@@ -57,7 +188,7 @@
 			android:orientation="horizontal">
 
 			<TextView
-				android:layout_width="50dp"
+				android:layout_width="70dp"
 				android:layout_height="wrap_content"
 				android:text="Device" />
 			<TextView
@@ -78,7 +209,7 @@
 				android:orientation="horizontal">
 
 				<TextView
-					android:layout_width="50dp"
+					android:layout_width="70dp"
 					android:layout_height="wrap_content"
 					android:text="Asal" />
 				<TextView
@@ -98,7 +229,7 @@
 				android:orientation="horizontal">
 
 				<TextView
-					android:layout_width="50dp"
+					android:layout_width="70dp"
 					android:layout_height="wrap_content"
 					android:text="Usia" />
 				<TextView
@@ -119,7 +250,171 @@
 				android:orientation="horizontal">
 
 				<TextView
-					android:layout_width="50dp"
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:text="Lainnya" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=":" />
+				<EditText
+					android:id="@+id/other1"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:hint="Masukan Text" />
+			</LinearLayout>
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:text="Lainnya" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=":" />
+				<EditText
+					android:id="@+id/other2"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:hint="Masukan Text" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:text="Lainnya" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=":" />
+				<EditText
+					android:id="@+id/other3"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:hint="Masukan Text" />
+			</LinearLayout>
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:text="Lainnya" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=":" />
+				<EditText
+					android:id="@+id/other4"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:hint="Masukan Text" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:text="Lainnya" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=":" />
+				<EditText
+					android:id="@+id/other5"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:hint="Masukan Text" />
+			</LinearLayout>
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:text="Lainnya" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=":" />
+				<EditText
+					android:id="@+id/other6"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:hint="Masukan Text" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:text="Lainnya" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=":" />
+				<EditText
+					android:id="@+id/other7"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:hint="Masukan Text" />
+			</LinearLayout>
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:text="Lainnya" />
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=":" />
+				<EditText
+					android:id="@+id/other8"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:hint="Masukan Text" />
+			</LinearLayout>
+			
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="70dp"
 					android:layout_height="wrap_content"
 					android:text="Quote" />
 				<TextView

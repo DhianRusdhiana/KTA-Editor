@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/nia_bg_kta" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:systemui="http://schemas.android.com/apk/res/com.android.systemui">
   
+    <LinearLayout
+		android:background="@drawable/header_bg_kta"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:gravity="center">
+    <com.dhian.KTA.Logo
+		android:layout_marginTop="10dp"
+		android:layout_width="fill_parent"
+		android:layout_height="40dp"
+		android:id="@+id/logo" />
     <TextView
 		android:textSize="13.5dip"
 		android:textStyle="bold"
 		android:textColor="#ff281304"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="10dp"
+		android:layout_marginBottom="10dp"
 		android:text="★ MEDIATEK ANDROID ART AND DEV ★" />
+	</LinearLayout>
 	<LinearLayout
-		android:layout_marginTop="15dp"
+		android:background="@drawable/boddy_bg_kta"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:gravity="center">
+	<LinearLayout
+		android:layout_marginTop="10dp"
 		android:layout_marginLeft="10dp"
 		android:layout_marginRight="10dp"
 		android:layout_width="fill_parent"
@@ -49,7 +67,7 @@
 		android:layout_height="wrap_content"
 		android:orientation="horizontal">
 		<TextView
-			android:layout_width="50dp"
+			android:layout_width="65dp"
 			android:layout_height="wrap_content"
 			android:textSize="14dp"
 			android:textColor="#ff281304"
@@ -74,7 +92,7 @@
 			   android:layout_height="wrap_content"
 			   android:orientation="horizontal">
 			   <TextView
-				   android:layout_width="50dp"
+				   android:layout_width="65dp"
 				   android:layout_height="wrap_content"
 				   android:textSize="14dp"
 				   android:textColor="#ff281304"
@@ -99,7 +117,7 @@
 			   android:layout_height="wrap_content"
 			   android:orientation="horizontal">
 			   <TextView
-				   android:layout_width="50dp"
+				   android:layout_width="65dp"
 				   android:layout_height="wrap_content"
 				   android:textSize="14dp"
 				   android:textColor="#ff281304"
@@ -124,7 +142,7 @@
 			   android:layout_height="wrap_content"
 			   android:orientation="horizontal">
 			   <TextView
-				   android:layout_width="50dp"
+				   android:layout_width="65dp"
 				   android:layout_height="wrap_content"
 				   android:textSize="14dp"
 				   android:textColor="#ff281304"
@@ -143,6 +161,213 @@
 				   android:textSize="14dp"
 				   android:textColor="#ff281304"/>
 		   </LinearLayout>
+		   <LinearLayout
+			   android:gravity="center_vertical"
+			   android:layout_width="fill_parent"
+			   android:layout_height="wrap_content"
+			   android:orientation="horizontal">
+			   <TextView
+				   android:layout_width="65dp"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text="Lainnya" />
+			   <TextView
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text=":" />
+			   <com.dhian.KTA.Other
+				   android:id="@+id/other1"
+				   android:layout_marginLeft="5dp"
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"/>
+		   </LinearLayout>
+
+		   <LinearLayout
+			   android:gravity="center_vertical"
+			   android:layout_width="fill_parent"
+			   android:layout_height="wrap_content"
+			   android:orientation="horizontal">
+			   <TextView
+				   android:layout_width="65dp"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text="Lainnya" />
+			   <TextView
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text=":" />
+			   <com.dhian.KTA.Other
+				   android:id="@+id/other2"
+				   android:layout_marginLeft="5dp"
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"/>
+		   </LinearLayout>
+
+		   <LinearLayout
+			   android:gravity="center_vertical"
+			   android:layout_width="fill_parent"
+			   android:layout_height="wrap_content"
+			   android:orientation="horizontal">
+			   <TextView
+				   android:layout_width="65dp"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text="Lainnya" />
+			   <TextView
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text=":" />
+			   <com.dhian.KTA.Other
+				   android:id="@+id/other3"
+				   android:layout_marginLeft="5dp"
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"/>
+		   </LinearLayout>
+
+		   <LinearLayout
+			   android:gravity="center_vertical"
+			   android:layout_width="fill_parent"
+			   android:layout_height="wrap_content"
+			   android:orientation="horizontal">
+			   <TextView
+				   android:layout_width="65dp"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text="Lainnya" />
+			   <TextView
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text=":" />
+			   <com.dhian.KTA.Other
+				   android:id="@+id/other4"
+				   android:layout_marginLeft="5dp"
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"/>
+		   </LinearLayout>
+
+		   <LinearLayout
+			   android:gravity="center_vertical"
+			   android:layout_width="fill_parent"
+			   android:layout_height="wrap_content"
+			   android:orientation="horizontal">
+			   <TextView
+				   android:layout_width="65dp"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text="Lainnya" />
+			   <TextView
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text=":" />
+			   <com.dhian.KTA.Other
+				   android:id="@+id/other5"
+				   android:layout_marginLeft="5dp"
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"/>
+		   </LinearLayout>
+
+		   <LinearLayout
+			   android:gravity="center_vertical"
+			   android:layout_width="fill_parent"
+			   android:layout_height="wrap_content"
+			   android:orientation="horizontal">
+			   <TextView
+				   android:layout_width="65dp"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text="Lainnya" />
+			   <TextView
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text=":" />
+			   <com.dhian.KTA.Other
+				   android:id="@+id/other6"
+				   android:layout_marginLeft="5dp"
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"/>
+		   </LinearLayout>
+
+		   <LinearLayout
+			   android:gravity="center_vertical"
+			   android:layout_width="fill_parent"
+			   android:layout_height="wrap_content"
+			   android:orientation="horizontal">
+			   <TextView
+				   android:layout_width="65dp"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text="Lainnya" />
+			   <TextView
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text=":" />
+			   <com.dhian.KTA.Other
+				   android:id="@+id/other7"
+				   android:layout_marginLeft="5dp"
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"/>
+		   </LinearLayout>
+
+		   <LinearLayout
+			   android:gravity="center_vertical"
+			   android:layout_width="fill_parent"
+			   android:layout_height="wrap_content"
+			   android:orientation="horizontal">
+			   <TextView
+				   android:layout_width="65dp"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text="Lainnya" />
+			   <TextView
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"
+				   android:text=":" />
+			   <com.dhian.KTA.Other
+				   android:id="@+id/other8"
+				   android:layout_marginLeft="5dp"
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textSize="14dp"
+				   android:textColor="#ff281304"/>
+		   </LinearLayout>
 		
 	   </LinearLayout>
 	</LinearLayout>
@@ -154,5 +379,7 @@
 		android:layout_width="280dp"
 		android:layout_height="wrap_content"
 	    android:id="@+id/quote"
-		android:layout_marginTop="10dp"/>
+		android:layout_marginTop="10dp"
+		android:layout_marginBottom="20dp"/>
+	</LinearLayout>
 </LinearLayout>

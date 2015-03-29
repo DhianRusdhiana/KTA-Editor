@@ -19,7 +19,7 @@ extends ImageView {
     public Photo(final Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         this.photoKTA = (ImageView)this.findViewById(getID("nia_profile_kta","id"));
-        this.photoUri = context.getSharedPreferences("EvoPrefsFile", 0).getString("photoKTA", "null");
+        this.photoUri = context.getSharedPreferences("Vicha", 0).getString("photoKTA", "null");
         if (this.photoUri == "null") {
             this.photoKTA.setImageResource(getID("nia_default_kta","drawable"));
         } else {
@@ -28,7 +28,7 @@ extends ImageView {
         BroadcastReceiver mReceiver = new BroadcastReceiver(){
 
             public void onReceive(Context context2, Intent intent) {
-                SharedPreferences sharedPreferences = context.getSharedPreferences("EvoPrefsFile", 0);
+                SharedPreferences sharedPreferences = context.getSharedPreferences("Vicha", 0);
                 Photo.this.photoUri = sharedPreferences.getString("photoKTA", "null");
                 if (Photo.this.photoUri == "null") {
                     Photo.this.photoKTA.setImageResource(getID("nia_default_kta","drawable"));
@@ -42,7 +42,7 @@ extends ImageView {
             public void onReceive(Context context2, Intent intent) {
                 Photo.this.uri = intent.getStringExtra("KTAkey");
                 Photo.this.photoKTA.setImageURI(Uri.parse((String)Photo.this.uri));
-                SharedPreferences.Editor editor = context.getSharedPreferences("EvoPrefsFile", 0).edit();
+                SharedPreferences.Editor editor = context.getSharedPreferences("Vicha", 0).edit();
                 editor.putString("photoKTA", Photo.this.uri);
                 editor.commit();
             }
