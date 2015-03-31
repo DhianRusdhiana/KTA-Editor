@@ -48,29 +48,7 @@
 			android:layout_height="wrap_content"
 			android:orientation="vertical"
 			android:gravity="center">
-		<LinearLayout
-			android:layout_marginBottom="5dp"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:orientation="horizontal"
-			android:gravity="center">
-			<com.dhian.KTA.GifView
-				android:id="@+id/arrowLeft"
 				
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"/>
-			<TextView
-				android:layout_marginLeft="5dp"
-				android:layout_marginRight="5dp"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Geser Untuk Memilih Bentuk Foto" />
-			<com.dhian.KTA.GifView
-				android:rotation="180"
-				android:id="@+id/arrowRight"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"/>
-		</LinearLayout>
 		
     <ViewFlipper
 		android:layout_width="fill_parent"
@@ -90,10 +68,7 @@
 		android:layout_width="120dp"
 		android:layout_height="120dp"
 		android:scaleType="centerCrop"/>
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="SQUARE" />
+
 	
 		</LinearLayout>
 		<LinearLayout
@@ -107,10 +82,7 @@
 				android:layout_width="120dp"
 				android:layout_height="120dp"
 				android:scaleType="centerCrop"/>
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="CIRCLE" />
+			
 			
 		</LinearLayout>
 		<LinearLayout
@@ -124,13 +96,14 @@
 				android:layout_width="120dp"
 				android:layout_height="120dp"
 				android:scaleType="centerCrop"/>
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="ROUNDED" />
+			
 
 		</LinearLayout>
 	</ViewFlipper>
+	<Spinner
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/spinner1"/>
 		</LinearLayout>
 		<LinearLayout
 			android:layout_marginTop="10dp"

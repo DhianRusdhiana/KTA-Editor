@@ -37,6 +37,11 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ViewFlipper;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressLint(value={"CommitPrefEdits"})
 public class KTAEditor
@@ -58,17 +63,9 @@ extends Activity {
 	
     EditText nama, device, asal, usia, other1, other2, other3, other4, other5, other6, other7, other8, quote;
 	String namaKTA, deviceKTA, asalKTA, usiaKTA, quoteKTA, other1KTA, other2KTA, other3KTA, other4KTA, other5KTA, other6KTA, other7KTA, other8KTA;
-	private static final int SWIPE_MIN_DISTANCE = 120;
-	private static final int SWIPE_THRESHOLD_VELOCITY = 200;
-	private ViewFlipper mViewFlipper, tabFlipper;	
-	private AnimationListener mAnimationListener;
-	private Context mContext;
 	
-	GifView gifViewL, gifViewR;
+	private ViewFlipper tabFlipper;	
 	
-	
-	@SuppressWarnings("deprecation")
-	private final GestureDetector detector = new GestureDetector(new SwipeGestureDetector());
 	
 
 	private void photoCrop() {
@@ -205,8 +202,6 @@ extends Activity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.setContentView(getID("dhian_kta_editor","layout"));
-		this.gifViewL = (GifView)this.findViewById(getID("arrowLeft","id"));
-		this.gifViewR = (GifView)this.findViewById(getID("arrowRight","id"));
 		this.photoKTA = (ImageView)this.findViewById(getID("photo","id"));
 		this.photoCircle = (ImageView)this.findViewById(getID("photoCircle","id"));
 		this.photoRounded = (ImageView)this.findViewById(getID("photoRounded","id"));
@@ -492,59 +487,51 @@ extends Activity {
 		inAnim = AnimationUtils.loadAnimation(this, getID("from_middle","anim"));
 		outAnim = AnimationUtils.loadAnimation(this, getID("to_middle","anim"));
 		
-		mContext = this;
-		mViewFlipper = (ViewFlipper) this.findViewById(getID("viewFlipper","id"));
-		mViewFlipper.setOnTouchListener(new OnTouchListener() {
+		
+		List<String> list = new ArrayList<String>();
+        list.add("Square");
+        list.add("Circle");
+        list.add("Rounded");
+        
+		Spinner sp = (Spinner)findViewById(getID("spinner1","id"));
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, list);
+        //set the view for the Drop down list
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //set the ArrayAdapter to the spinner
+        sp.setAdapter(dataAdapter);
+		SharedPreferences shp = this.getSharedPreferences("EvoPrefsFile", 0);
+		
+        sp.setOnItemSelectedListener(new OnItemSelectedListener() {
+
 				@Override
-				public boolean onTouch(final View view, final MotionEvent event) {
-					detector.onTouchEvent(event);
-					return true;
+				public void onItemSelected(AdapterView<?> arg0, View arg1,
+										   int arg2, long arg3) {
+					final ViewFlipper vf = (ViewFlipper)findViewById(getID("viewFlipper","id"));
+					vf.setInAnimation(inAnim);
+					vf.setOutAnimation(outAnim);
+					String s=((TextView)arg1).getText().toString();
+					if(s.equals("Square"))
+						vf.setDisplayedChild(0);
+						
+					if(s.equals("Circle"))
+						vf.setDisplayedChild(1);
+					
+					if(s.equals("Rounded"))
+						vf.setDisplayedChild(2);
+						
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView<?> arg0) {
+					// TODO Auto-generated method stub
+
 				}
 			});
-		mAnimationListener = new Animation.AnimationListener() {
-			public void onAnimationStart(Animation animation) {
-				//animation started event
-			}
-
-			public void onAnimationRepeat(Animation animation) {
-			}
-
-			public void onAnimationEnd(Animation animation) {
-				//TODO animation stopped event
-			}
-		};
 		
 	}
 
 
-	class SwipeGestureDetector extends SimpleOnGestureListener {
-		@Override
-		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-			try {
-				// right to left swipe
-				if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-					mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(mContext, getID("left_in","anim")));
-					mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(mContext, getID("left_out","anim")));
-					// controlling animation
-					mViewFlipper.getInAnimation().setAnimationListener(mAnimationListener);
-					mViewFlipper.showNext();
-					return true;
-				} else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-					mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(mContext, getID("right_in","anim")));
-					mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(mContext, getID("right_out","anim")));
-					// controlling animation
-					mViewFlipper.getInAnimation().setAnimationListener(mAnimationListener);
-					mViewFlipper.showPrevious();
-					return true;
-				}
 
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			return false;
-		}
-	}	 
 		
 	
 
