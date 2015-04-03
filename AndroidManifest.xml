@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
 		<activity
-			android:label="@string/app_name"
+			android:theme="@style/KtaTheme"
+			android:label="@null"
 			android:name=".KTAEditor" />
     </application>
 

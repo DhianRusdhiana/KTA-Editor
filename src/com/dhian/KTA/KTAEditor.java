@@ -1,6 +1,7 @@
 package com.dhian.KTA;
 
 import android.app.Activity;
+import android.app.ActionBar;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,7 +9,20 @@ import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.graphics.RectF;
+import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.TypefaceSpan;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnScrollChangedListener;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.Button;
 import android.graphics.Bitmap;
@@ -47,7 +61,7 @@ import java.util.List;
 public class KTAEditor
 extends Activity {
 
-	Button done, tabPhoto, tabLogo;
+	Button done;
 	Bitmap bitmap, bitmap2, bitmap3;
 	Bundle bnd;
     String abUri ,cUri, rUri, logoUri;
@@ -64,7 +78,29 @@ extends Activity {
     EditText nama, device, asal, usia, other1, other2, other3, other4, other5, other6, other7, other8, quote;
 	String namaKTA, deviceKTA, asalKTA, usiaKTA, quoteKTA, other1KTA, other2KTA, other3KTA, other4KTA, other5KTA, other6KTA, other7KTA, other8KTA;
 	
-	private ViewFlipper tabFlipper;	
+	
+	
+	private static final String TAG = "NoBoringActionBarActivity";
+    private int mActionBarTitleColor;
+    private int mActionBarHeight;
+    private int mHeaderHeight;
+    private int mMinHeaderTranslation;
+    private KenBurnsView mHeaderPicture;
+    private ViewFlipper mHeaderLogo;
+	private Spinner sp;
+    private View mHeader;
+    private AccelerateDecelerateInterpolator mSmoothInterpolator;
+
+    private RectF mRect1 = new RectF();
+    private RectF mRect2 = new RectF();
+
+	private ScrollView sv;
+
+    private AlphaForegroundColorSpan mAlphaForegroundColorSpan;
+    private SpannableString mSpannableString;
+
+    private TypedValue mTypedValue = new TypedValue();
+	
 	
 	
 
@@ -201,6 +237,12 @@ extends Activity {
 
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+		
+		mSmoothInterpolator = new AccelerateDecelerateInterpolator();
+        mHeaderHeight = getResources().getDimensionPixelSize(R.dimen.header_height);
+        mMinHeaderTranslation = -mHeaderHeight + getActionBarHeight();
+		
+		
         this.setContentView(getID("dhian_kta_editor","layout"));
 		this.photoKTA = (ImageView)this.findViewById(getID("photo","id"));
 		this.photoCircle = (ImageView)this.findViewById(getID("photoCircle","id"));
@@ -220,9 +262,7 @@ extends Activity {
 		this.other7 = (EditText)this.findViewById(getID("other7","id"));
 		this.other8 = (EditText)this.findViewById(getID("other8","id"));
 		this.done = (Button)this.findViewById(getID("save","id"));
-		this.tabPhoto = (Button)this.findViewById(getID("tab_photo","id"));
-		this.tabLogo = (Button)this.findViewById(getID("tab_logo","id"));
-		this.tabFlipper = (ViewFlipper)this.findViewById(getID("tab","id"));
+		
 	    SharedPreferences sharedPreferences2 = this.getSharedPreferences("EvoPrefsFile", 0);
 		this.namaKTA = sharedPreferences2.getString("namaKTA", "");
 		this.abUri = sharedPreferences2.getString("photoKTA", "null");
@@ -464,26 +504,7 @@ extends Activity {
 										 }
 									 });
 		
-		this.tabPhoto.setOnClickListener((View.OnClickListener)new View.OnClickListener(){
-			public void onClick (View view){
-			    
-				tabPhoto.setSelected(true);
-				tabLogo.setSelected(false);
-				tabFlipper.setDisplayedChild(0);
-				tabFlipper.setInAnimation(inAnim);
-				tabFlipper.setOutAnimation(outAnim);
-			}
-		});
-		this.tabLogo.setOnClickListener((View.OnClickListener)new View.OnClickListener(){
-			public void onClick (View view){
-			    
-				tabPhoto.setSelected(false);
-				tabLogo.setSelected(true);
-				tabFlipper.setDisplayedChild(1);
-				tabFlipper.setInAnimation(inAnim);
-				tabFlipper.setOutAnimation(outAnim);
-			}
-		});
+		
 		inAnim = AnimationUtils.loadAnimation(this, getID("from_middle","anim"));
 		outAnim = AnimationUtils.loadAnimation(this, getID("to_middle","anim"));
 		
@@ -492,8 +513,10 @@ extends Activity {
         list.add("Square");
         list.add("Circle");
         list.add("Rounded");
+		list.add("Logo");
         
-		Spinner sp = (Spinner)findViewById(getID("spinner1","id"));
+		sp = (Spinner)findViewById(getID("spinner1","id"));
+	
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, list);
         //set the view for the Drop down list
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -510,6 +533,9 @@ extends Activity {
 					vf.setInAnimation(inAnim);
 					vf.setOutAnimation(outAnim);
 					String s=((TextView)arg1).getText().toString();
+					((TextView) arg0.getChildAt(0)).setTextColor(Color.WHITE);
+					((TextView) arg0.getChildAt(0)).setShadowLayer(3, 2, 2, (Color.RED));
+					
 					if(s.equals("Square"))
 						vf.setDisplayedChild(0);
 						
@@ -518,6 +544,11 @@ extends Activity {
 					
 					if(s.equals("Rounded"))
 						vf.setDisplayedChild(2);
+					
+					if(s.equals("Logo"))
+						vf.setDisplayedChild(3);
+						
+					
 						
 				}
 
@@ -527,6 +558,20 @@ extends Activity {
 
 				}
 			});
+			
+			
+		mHeader = findViewById(getID("header","id"));
+        mHeaderPicture = (KenBurnsView) findViewById(getID("header_picture","id"));
+        mHeaderPicture.setResourceIds(getID("picture0","drawable"), getID("picture1","drawable"));
+        mHeaderLogo = (ViewFlipper) findViewById(getID("viewFlipper","id"));
+        sv = (ScrollView) findViewById(getID("scroll","id"));
+        mActionBarTitleColor = (Color.TRANSPARENT);
+
+        mSpannableString = new SpannableString("");
+        mAlphaForegroundColorSpan = new AlphaForegroundColorSpan(mActionBarTitleColor);
+
+        setupActionBar();
+        setScrollView();
 		
 	}
 
@@ -617,9 +662,101 @@ extends Activity {
 		}while (true);
 	}
 
-	public void backto(View view) {
-        this.finish();
-	}	
+	private void setScrollView(){
+		sv.getViewTreeObserver().addOnScrollChangedListener(new OnScrollChangedListener() {
+
+				@Override
+				public void onScrollChanged() {
+					int scrollY = sv.getScrollY(); //for verticalScrollView
+					mHeader.setTranslationY(Math.max(-scrollY, mMinHeaderTranslation));
+					//header_logo --> actionbar icon
+					float ratio = clamp(mHeader.getTranslationY() / mMinHeaderTranslation, 0.0f, 1.0f);
+					interpolate(mHeaderLogo, getActionBarIconView(), mSmoothInterpolator.getInterpolation(ratio));
+					interpolate2(sp, getActionBarIconView(), mSmoothInterpolator.getInterpolation(ratio));
+					//actionbar title alpha
+					//getActionBarTitleView().setAlpha(clamp(5.0F * ratio - 4.0F, 0.0F, 1.0F));
+					//---------------------------------
+					//better way thanks to @cyrilmottier
+					setTitleAlpha(clamp(5.0F * ratio - 4.0F, 0.0F, 1.0F));
+
+				}
+			});
+	}
+
+
+
+
+
+    private void setTitleAlpha(float alpha) {
+        mAlphaForegroundColorSpan.setAlpha(alpha);
+        mSpannableString.setSpan(mAlphaForegroundColorSpan, 0, mSpannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        getActionBar().setTitle(mSpannableString);
+    }
+
+
+    public static float clamp(float value, float min, float max) {
+        return Math.max(min,Math.min(value, max));
+    }
+
+    private void interpolate(View view1, View view2, float interpolation) {
+        getOnScreenRect(mRect1, view1);
+        getOnScreenRect(mRect2, view2);
+
+        float scaleX = 1.0F + interpolation * (mRect2.width() / mRect1.width() - 1.0F);
+        float scaleY = 1.0F + interpolation * (mRect2.height() / mRect1.height() - 1.0F);
+        float translationX = 0.5F * (interpolation * (mRect2.left + mRect2.right - mRect1.left - mRect1.right));
+        float translationY = 0.5F * (interpolation * (mRect2.top + mRect2.bottom - mRect1.top - mRect1.bottom));
+
+        view1.setTranslationX(translationX);
+        view1.setTranslationY(translationY - mHeader.getTranslationY());
+        view1.setScaleX(scaleX);
+        view1.setScaleY(scaleY);
+    }
+	
+	private void interpolate2(View view1, View view2, float interpolation) {
+        getOnScreenRect(mRect1, view1);
+        getOnScreenRect(mRect2, view2);
+
+        
+        float translationX = 0.3F * (interpolation * (mRect2.left + mRect2.right - mRect1.left - mRect1.right));
+        float translationY = 0.5F * (interpolation * (mRect2.top + mRect2.bottom - mRect1.top - mRect1.bottom));
+
+        view1.setTranslationX(translationX);
+        view1.setTranslationY(translationY - mHeader.getTranslationY());
+        
+    }
+
+    private RectF getOnScreenRect(RectF rect, View view) {
+        rect.set(view.getLeft(), view.getTop(), view.getRight(), view.getBottom());
+        return rect;
+    }
+
+
+
+    private void setupActionBar() {
+        ActionBar actionBar = getActionBar();
+        actionBar.setIcon(getID("ic_transparent","drawable"));
+
+        //getActionBarTitleView().setAlpha(0f);
+    }
+
+    private ImageView getActionBarIconView() {
+        return (ImageView) findViewById(android.R.id.home);
+    }
+
+    /*private TextView getActionBarTitleView() {
+	 int id = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+	 return (TextView) findViewById(id);
+	 }*/
+
+    public int getActionBarHeight() {
+        if (mActionBarHeight != 0) {
+            return mActionBarHeight;
+        }
+        getTheme().resolveAttribute(android.R.attr.actionBarSize, mTypedValue, true);
+        mActionBarHeight = TypedValue.complexToDimensionPixelSize(mTypedValue.data, getResources().getDisplayMetrics());
+        return mActionBarHeight;
+    }	
 	
 	public int getID(String name, String Type) {
 		return getBaseContext().getResources().getIdentifier(name, Type, getBaseContext().getPackageName());
