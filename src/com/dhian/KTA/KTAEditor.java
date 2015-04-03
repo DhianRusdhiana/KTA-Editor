@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnScrollChangedListener;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Button;
 import android.graphics.Bitmap;
@@ -574,8 +575,21 @@ extends Activity {
 
         setupActionBar();
         setScrollView();
+		}
 		
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				// app icon in action bar clicked; goto parent activity.
+				this.finish();
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
+		
+	
 
 
 
