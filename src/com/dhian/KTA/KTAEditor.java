@@ -238,8 +238,10 @@ extends Activity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 		
+		final float scale = getResources().getDisplayMetrics().density;
+		int mHeight = (int) (240 * scale + 0.5f);
 		mSmoothInterpolator = new AccelerateDecelerateInterpolator();
-        mHeaderHeight = getResources().getDimensionPixelSize(R.dimen.header_height);
+        mHeaderHeight = mHeight;
         mMinHeaderTranslation = -mHeaderHeight + getActionBarHeight();
 		
 		
